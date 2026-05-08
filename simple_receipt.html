@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Чек {{ invoice_id }}</title>
+    <style>
+        /* Подключение шрифта для корректного отображения кириллицы */
+        @font-face {
+            font-family: 'DejaVu Sans';
+            src: url('https://github.com/google/fonts/raw/main/apache/dejavusans/DejaVuSans.ttf');
+        }
+
+        body {
+            font-family: 'DejaVu Sans', sans-serif;
+            margin: 40px;
+            color: #333;
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        h1 { margin: 0; }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted #ccc;
+            padding: 10px 0;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .total {
+            margin-top: 30px;
+            text-align: right;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Чек на оплату</h1>
+        <p>Заказ № {{ invoice_id }}</p>
+    </div>
+
+    <div class="content">
+        <div class="row">
+            <span class="label">Наименование товара (Product):</span>
+            <span>{{ product }}</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Количество (Qty):</span>
+            <span>{{ qty }} шт.</span>
+        </div>
+
+        <div class="row">
+            <span class="label">Цена за единицу (Price):</span>
+            <span>{{ price }} ₽</span>
+        </div>
+    </div>
+
+    <div class="total">
+        Итого: {{ price }} ₽
+    </div>
+
+</body>
+</html>
